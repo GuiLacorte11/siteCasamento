@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//The Lacortes//Casamento//PT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:evelin-guilherme-20270905@thelacortes.local
+DTSTAMP:20261010T010000Z
+DTSTART:20270905T183000Z
+SUMMARY:Casamento de Evelin e Guilherme
+LOCATION:Local do evento\, Estrada para Inácia de Carvalho\, 251\, São José da Lapa - MG
+DESCRIPTION:Uma aliança que aponta para a eternidade. Cerimônia às 15h30 (horário de Brasília).
+END:VEVENT
+END:VCALENDAR
