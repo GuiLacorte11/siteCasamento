@@ -1,0 +1,21 @@
+# Direção visual
+
+Composição recriada a partir de 12/10/2026, priorizando a referência Verona. Abertura fotográfica com identidade centralizada; bloco de boas-vindas vinho com a fotografia das mãos e alianças enviada pelo usuário em formato 16:9 na moldura ornamental enviada pelo usuário, com enquadramento centralizado nas mãos e cores originais, mantendo a moldura dourada e todo o texto centralizado abaixo; ensaio editorial sobre creme com apenas o retrato do casal e o título; bloco verde com a ilustração da mesa, o manifesto e o texto sobre acolher, repartir e celebrar; convite centralizado sobre fundo preto; bloco de dress code sobre papel oliva texturizado, com uma fotografia oval do casal em preto e branco, monograma e renda no mesmo tom com efeito de relevo; orientações do traje ao lado no computador e abaixo no celular, com composição mais compacta, fotografia levemente inclinada, título direto, cores a evitar identificadas com amostras riscadas e informação direta sobre o traje; presentes sobre papel e confirmação sobre vinho. O bloco “O sentido da nossa celebração” tem contornos de renda floral acima e abaixo, usando literalmente a fotografia de renda enviada pelo usuário, apresentada na horizontal por um invólucro SVG com máscara de luminância para remover o fundo preto na exibição. A renda também aparece como pequeno acabamento acima do formulário e no medalhão do dress code, com relevo em tom oliva inspirado na referência de papel e identidade visual enviada pelo usuário. Os títulos, os textos de leitura, o tamanho das imagens e o ritmo dos espaçamentos foram ajustados para uma composição mais consistente. O dress code informa traje social completo e pede para evitar branco, bege e off-white.
+
+A foto da abertura foi restaurada; a nova fotografia emoldurada aparece somente no bloco “Bem-vindos à nossa história”. As fotos são originais do casal. A moldura utiliza literalmente o JPEG enviado, apresentado como borda ornamental horizontal através de um invólucro SVG e CSS. O arquivo original da moldura e a fotografia não foram alterados; o recorte horizontal da foto acontece apenas na apresentação do site; a fotografia das mãos voltou às cores originais. A numeração das seções continua removida; a concha mantém 68 px e as informações da cerimônia ficam centralizadas. O CSS público agora é independente do estilo anterior e do painel administrativo. Dados, convites e pagamentos mantêm o comportamento existente.
+
+O fundo floral abaixo foi preservado como asset de uma versão anterior, mas não é usado nesta composição.
+
+## Fundo floral
+
+Arquivo: `public/assets/floral-garden.png`.
+
+Criado com a ferramenta integrada de geração de imagens, apenas como ilustração decorativa. As fotos do casal não foram geradas nem alteradas.
+
+### Prompt final
+
+Use case: stylized-concept. Asset type: decorative background for a romantic wedding website section, landscape 1536x1024. Primary request: original Dutch-master inspired oil painting of an abundant romantic garden floral still life against a very dark forest-green backdrop. Loose natural arrangement of ivory roses, muted burgundy peonies, delicate pale flowers, olive leaves and fine vines. Soft old-master chiaroscuro, subtle canvas grain, elegant antique atmosphere. Composition: flowers concentrated along the bottom edge and outer sides, lower two thirds; keep the upper middle and central area darker and quieter to allow cream typography on top. Color palette: forest green #18271d, burgundy #491c27, antique ivory #f5f1e8, subdued olive #777c59. No people, no buildings, no letters, no logos, no watermarks, no UI, no framing border. This is a background illustration, not a mockup of a website.
+
+## Ajuste de conteúdo e navegação — 13/10/2026
+
+O nome do espaço passou a “Local do evento”, inclusive na agenda. O endereço foi mantido. Os títulos foram reduzidos em aproximadamente 15–20% e os textos de leitura maiores passaram para 14 px. A navegação entre os blocos ficou concentrada no menu; foram removidos atalhos repetidos na abertura, na história e no dress code. O local tem apenas um botão de rota, e o contato dos noivos fica no rodapé. O pacote de envio direto mantém somente um contato geral no rodapé, além da ação específica de confirmação por WhatsApp.
