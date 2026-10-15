@@ -56,14 +56,12 @@ p + p { margin-top: 19px; }
 .masthead-photo { position: absolute; width: 100%; height: 100%; inset: 0; object-fit: cover; object-position: 50% 42%; z-index: -2; }
 .masthead::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(#19241d73, #2630290d 48%, #152019b8); }
 .masthead-identity { display: flex; align-items: center; flex-direction: column; padding-top: 130px; text-align: center; }
-.masthead-intro { width: 92%; max-width: 1120px; font-size: clamp(5px, 1.65vw, 12px); line-height: 1.8; letter-spacing: clamp(.05px, .025vw, .3px); text-transform: uppercase; white-space: nowrap; }
 .masthead h1 { width: min(420px, 70%); margin: 14px 0 16px; line-height: 1; }
 .masthead h1 img { width: 100%; height: auto; filter: invert(1); mix-blend-mode: screen; }
 .masthead-date { font-size: 8px; letter-spacing: 1.9px; }
 .masthead-date span { margin: 0 13px; }
 .masthead-bottom { position: absolute; inset: auto 6% 46px; display: flex; align-items: end; justify-content: space-between; gap: 24px; }
-.masthead-bottom p { font: 21px/1.5 var(--serif); }
-.masthead-bottom em { font-family: Georgia, serif; }
+.masthead-bottom p { max-width: 100%; font: clamp(4px, 1.4vw, 18px)/1.5 var(--serif); text-transform: uppercase; white-space: nowrap; }
 
 /* An editorial spread, with each photograph and paragraph in its own grid cell. */
 .welcome { background: var(--wine); color: var(--paper); padding-top: var(--section-space); }
@@ -286,7 +284,6 @@ dialog::backdrop { background: #18221cc9; backdrop-filter: blur(4px); }
   .masthead-date { font-size: 7px; letter-spacing: 1px; }
   .masthead-date span { margin: 0 8px; }
   .masthead-bottom { inset: auto 7% 27px; flex-direction: column; align-items: center; text-align: center; gap: 17px; }
-  .masthead-bottom p { font-size: 18px; line-height: 1.6; }
   .welcome { padding-top: 45px; }
   .story-spread { gap: 25px; }
   .story-heading { padding-top: 0; }
