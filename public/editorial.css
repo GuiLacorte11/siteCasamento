@@ -60,8 +60,8 @@ p + p { margin-top: 19px; }
 .masthead h1 img { width: 100%; height: auto; filter: invert(1); mix-blend-mode: screen; }
 .masthead-date { font-size: 8px; letter-spacing: 1.9px; }
 .masthead-date span { margin: 0 13px; }
-.masthead-bottom { position: absolute; inset: auto 6% 46px; display: flex; align-items: end; justify-content: space-between; gap: 24px; }
-.masthead-bottom p { max-width: 100%; font: clamp(4px, 1.4vw, 18px)/1.5 var(--body); text-transform: uppercase; white-space: nowrap; }
+.masthead-bottom { position: absolute; inset: auto 6% 46px; display: flex; align-items: end; justify-content: flex-end; gap: 24px; text-align: right; }
+.masthead-bottom p { max-width: 100%; font: clamp(4px, 1.1vw, 14px)/1.5 var(--body); text-transform: uppercase; white-space: nowrap; }
 
 /* An editorial spread, with each photograph and paragraph in its own grid cell. */
 .welcome { background: var(--wine); color: var(--paper); padding-top: var(--section-space); }
@@ -283,7 +283,7 @@ dialog::backdrop { background: #18221cc9; backdrop-filter: blur(4px); }
   .masthead h1 { width: 78%; max-width: 360px; margin-top: 13px; margin-bottom: 12px; }
   .masthead-date { font-size: 7px; letter-spacing: 1px; }
   .masthead-date span { margin: 0 8px; }
-  .masthead-bottom { inset: auto 7% 27px; flex-direction: column; align-items: center; text-align: center; gap: 17px; }
+  .masthead-bottom { inset: auto 7% 27px; flex-direction: column; align-items: flex-end; text-align: right; gap: 17px; }
   .welcome { padding-top: 45px; }
   .story-spread { gap: 25px; }
   .story-heading { padding-top: 0; }
