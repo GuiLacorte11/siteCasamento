@@ -78,7 +78,8 @@ p + p { margin-top: 16px; }
 .story-photo { width: min(880px, 100%); }
 .story-photo img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 60%; }
 figcaption { font: italic 12px/1.8 Georgia, serif; margin-top: 14px; font-size: 14px; line-height: 1.7; }
-.story-copy { color: #e9e1d9; font-size: var(--copy-size); line-height: var(--copy-leading); max-width: 60ch; text-align: center; }
+.story-copy { width: 100%; color: #e9e1d9; font-size: var(--copy-size); line-height: var(--copy-leading); max-width: 64ch; text-align: left; }
+.story-copy p + p { margin-top: 24px; }
 .shell { width: 68px; height: auto; filter: invert(1); mix-blend-mode: screen; opacity: .85; margin: 25px 0 12px; }
 .story-copy .shell { margin: 25px auto 12px; }
 .story-closing { text-align: center; padding: 20px 0 56px; }
