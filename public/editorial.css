@@ -134,25 +134,20 @@ figcaption { font: italic 12px/1.8 Georgia, serif; margin-top: 14px; font-size: 
 .countdown-values b { font: 22px Georgia, serif; opacity: .65; padding-bottom: 8px; }
 
 .dress-code-section { padding: clamp(52px, 5vw, 72px) 0; background: #606145 url('/assets/textura-papel-oliva.svg') repeat; color: #f7f4eb; }
-.dress-code-layout { width: min(940px, 86%); margin: 0 auto; display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 7%; align-items: center; }
-.dress-code-medallion { width: min(340px, 100%); aspect-ratio: 540 / 650; position: relative; justify-self: center; }
-.dress-code-lace { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; filter: drop-shadow(1.5px 2px 1px #393b2880) drop-shadow(-1px -1px .5px #98977a50); }
-.dress-code-portrait { position: absolute; top: 15.5%; left: 20.5%; width: 59%; height: 69%; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 1px #484a32, 0 1px 2px #2a2b2366; }
-.dress-code-lace, .dress-code-portrait { transform: rotate(-2deg); }
-.dress-code-photo { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; filter: grayscale(1) contrast(1.08); transition: transform .4s ease; }
-.dress-code-monogram { position: absolute; top: 25%; left: 50%; transform: translate(-50%, -50%); width: 36px; height: auto; filter: invert(1); mix-blend-mode: screen; opacity: .9; }
-.dress-code-copy { text-align: left; max-width: 490px; }
-.dress-code-copy .eyebrow { color: #e5e3d1; font-size: var(--label-size); letter-spacing: 1.2px; }
-.dress-code-copy h2 { font-size: var(--title-size); line-height: 1.4; margin: 16px 0 24px; }
-.dress-code-guidance { font-size: var(--copy-size); line-height: var(--copy-leading); color: #eeecdf; }
-.dress-code-colors { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 14px 0 0; }
-.dress-code-colors li { display: inline-flex; align-items: center; gap: 9px; padding: 8px 12px; border: 1px solid #d6d3bc66; font-size: 14px; line-height: 1.6; }
-.dress-code-swatch { position: relative; width: 17px; height: 17px; border-radius: 50%; flex: 0 0 17px; }
+.dress-code-layout { width: min(500px, 94%); margin: 0 auto; }
+.dress-code-card { position: relative; width: 100%; }
+.dress-code-lace { width: 100%; height: auto; pointer-events: none; filter: drop-shadow(0 5px 8px #25271f38); }
+.dress-code-copy { position: absolute; inset: 18% 21%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--wine); }
+.dress-code-copy .eyebrow { color: #606145; font-size: var(--label-size); letter-spacing: 1.2px; }
+.dress-code-copy h2 { font-size: var(--title-size); line-height: 1.4; margin: 10px 0 20px; }
+.dress-code-guidance { font-size: var(--copy-size); line-height: var(--copy-leading); color: #565344; max-width: 22ch; }
+.dress-code-colors { list-style: none; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 0; margin: 16px 0 0; }
+.dress-code-colors li { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; line-height: 1.6; }
+.dress-code-swatch { position: relative; width: 17px; height: 17px; border: 1px solid #b9b3a5; border-radius: 50%; flex: 0 0 17px; }
 .dress-code-swatch::after { content: ''; position: absolute; width: 1px; height: 23px; background: var(--wine); top: -3px; left: 8px; transform: rotate(-45deg); }
 .swatch-white { background: #fff; }
 .swatch-beige { background: #d9c8ad; }
 .swatch-off-white { background: #eeeade; }
-@media (hover: hover) { .dress-code-medallion:hover .dress-code-photo { transform: scale(1.04); } }
 
 .gifts-section { padding: var(--section-space) max(8%, calc((100vw - 1120px)/2)); }
 .section-top { display: grid; grid-template-columns: 1fr .8fr; align-items: end; gap: 13%; }
@@ -334,14 +329,12 @@ dialog::backdrop { background: #18221cc9; backdrop-filter: blur(4px); }
   .countdown-values b { font-size: 17px; }
   .countdown-values span { font-size: 10px; letter-spacing: .7px; }
   .dress-code-section { padding: 42px 0 48px; }
-  .dress-code-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  .dress-code-medallion { width: min(250px, 78%); margin: 0 auto; }
-  .dress-code-monogram { width: 28px; }
-  .dress-code-copy { text-align: center; max-width: 430px; margin: 0 auto; }
+  .dress-code-layout { width: min(440px, 94%); }
   .dress-code-copy .eyebrow { font-size: var(--label-size); letter-spacing: 1.2px; }
-  .dress-code-copy h2 { font-size: var(--title-size); margin: 14px 0 20px; line-height: 1.4; }
-  .dress-code-colors { justify-content: center; gap: 8px; }
-  .dress-code-colors li { font-size: 14px; padding: 7px 9px; gap: 7px; line-height: 1.6; }
+  .dress-code-copy h2 { font-size: var(--title-size); margin: 8px 0 12px; line-height: 1.4; }
+  .dress-code-guidance { font-size: 14px; line-height: 1.6; }
+  .dress-code-colors { gap: 6px; margin-top: 12px; }
+  .dress-code-colors li { font-size: 14px; gap: 8px; line-height: 1.6; }
   .gifts-section { padding: 65px 7% 58px; }
   .section-top { grid-template-columns: minmax(0, 1fr); gap: 25px; }
   .section-top .eyebrow { font-size: var(--label-size); letter-spacing: 1.2px; }
