@@ -118,3 +118,37 @@ test('CSV exports require authentication and neutralize spreadsheet formulas', a
   const exported = await call('/api/admin/export', undefined, session);
   assert.equal(exported.status, 200); assert.ok(exported.value.includes("\"'=formula\""));
 });
+
+test('hybrid gifts persist shop links across handlers while preserving Pix', async () => {
+  const store = memoryStore(), call = caller(store), session = await login(call);
+  const catalog = (await call('/api/gifts')).value.gifts;
+  assert.equal(catalog.find(g => g.id === 1).physical_enabled, 0);
+  const gift = catalog.find(g => g.id === 3);
+  assert.equal(gift.physical_enabled, 1);
+  const update = { ...gift, physical_enabled: true, product_url: 'https://loja.example/produto?cor=verde' };
+  assert.equal((await call('/api/admin/gifts', update)).status, 401);
+  assert.equal((await call('/api/admin/gifts', update, session)).status, 200);
+  const fresh = caller(store, 'fresh-catalog');
+  assert.equal((await fresh('/api/gifts')).value.gifts.find(g => g.id === 3).product_url, update.product_url);
+  assert.equal((await fresh('/api/gifts/3/pix')).value.amount, gift.amount);
+  assert.equal((await fresh('/api/admin/dashboard', undefined, session)).value.contributions.length, 0);
+  for (const product_url of ['javascript:alert(1)', 'data:text/html,test', 'https://user:password@loja.example/item', 'http://loja.example/item']) {
+    assert.equal((await call('/api/admin/gifts', { ...update, product_url }, session)).status, 400);
+  }
+  assert.equal((await fresh('/api/gifts')).value.gifts.find(g => g.id === 3).product_url, update.product_url);
+  assert.equal((await call('/api/admin/gifts', { ...update, physical_enabled: false, product_url: '' }, session)).status, 200);
+  const disabled = (await fresh('/api/gifts')).value.gifts.find(g => g.id === 3);
+  assert.equal(disabled.physical_enabled, 0); assert.equal(disabled.product_url, '');
+});
+
+test('old hosted catalogs gain product defaults without losing saved information', async () => {
+  const store = memoryStore(), call = caller(store);
+  await call('/api/gifts');
+  const { data, etag } = await store.getWithMetadata();
+  for (const gift of data.gifts) { delete gift.physical_enabled; delete gift.product_url; }
+  data.gifts[2].description = 'Descrição já cadastrada';
+  await store.setJSON('private-state', data, { onlyIfMatch: etag });
+  const gift = (await caller(store)('/api/gifts')).value.gifts.find(g => g.id === 3);
+  assert.equal(gift.description, 'Descrição já cadastrada');
+  assert.equal(gift.physical_enabled, 1); assert.equal(gift.product_url, '');
+});
