@@ -37,6 +37,14 @@ A instalação cria sua própria pasta `data/` com o banco local e os convidados
 
 O site usa um servidor local. Para os formulários e presentes funcionarem, inicie-o com `npm start` em vez de abrir o HTML diretamente.
 
+## Presentes por Pix ou produto
+
+Nos itens do lar, o convidado pode escolher entre Pix e produto. No painel, em **Catálogo de presentes → Editar**, habilite **Permitir presentear com o produto** e cadastre o endereço HTTPS do produto na loja. Sem um endereço específico, o botão identifica e abre uma busca pelo nome do item na Amazon. O valor do catálogo é uma sugestão para Pix; o preço de compra é o informado pela loja.
+
+A compra e o pagamento do produto acontecem na loja. Abrir o link não reserva o item nem confirma seu recebimento no painel; o convidado pode combinar modelo e entrega pelo WhatsApp. As contribuições por Pix continuam registradas e conferidas manualmente.
+
+No pacote estático, os links podem ser definidos no sexto campo opcional de cada item de `initialGifts`, em `config.mjs`: `{ physical_enabled: true, product_url: 'https://loja.com.br/produto' }`. Depois, gere o pacote novamente. No projeto completo, essas configurações são salvas pelo painel e preservadas nas atualizações.
+
 
 ## Publicar no Netlify
 

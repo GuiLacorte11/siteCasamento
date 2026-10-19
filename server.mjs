@@ -8,6 +8,8 @@ import { DatabaseSync } from 'node:sqlite';
 import QRCode from 'qrcode';
 import { initialGuests, initialGifts, wedding } from './config.mjs';
 import { makePix } from './pix.mjs';
+import { productFields } from './lib/gift-options.mjs';
+import { migrateGiftOptions } from './lib/sqlite-catalog.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.join(root, 'public');
@@ -19,11 +21,15 @@ CREATE TABLE IF NOT EXISTS guests (id INTEGER PRIMARY KEY, name TEXT NOT NULL, n
 CREATE TABLE IF NOT EXISTS gifts (id INTEGER PRIMARY KEY, name TEXT NOT NULL, description TEXT NOT NULL, amount REAL NOT NULL, category TEXT NOT NULL, icon TEXT NOT NULL, active INTEGER NOT NULL DEFAULT 1);
 CREATE TABLE IF NOT EXISTS contributions (id INTEGER PRIMARY KEY, request_id TEXT NOT NULL UNIQUE, gift_id INTEGER NOT NULL, gift_name TEXT NOT NULL, amount REAL NOT NULL, sender TEXT NOT NULL, message TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'pending', created_at TEXT NOT NULL, confirmed_at TEXT);
 CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT NOT NULL);`);
+migrateGiftOptions(db);
 const normalize = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().replace(/\s+/g, ' ').toLowerCase();
 if (!db.prepare('SELECT value FROM settings WHERE key=?').get('seeded')) {
   db.exec('BEGIN');
   for (const [name, max, status, companions] of initialGuests) db.prepare('INSERT INTO guests(name,normalized,max_companions,status,companions) VALUES(?,?,?,?,?)').run(name, normalize(name), max, status, companions);
-  for (const [name, description, amount, category, icon] of initialGifts) db.prepare('INSERT INTO gifts(name,description,amount,category,icon) VALUES(?,?,?,?,?)').run(name, description, amount, category, icon);
+  for (const [name, description, amount, category, icon, options = {}] of initialGifts) {
+    const fields = productFields({ category, ...options });
+    db.prepare('INSERT INTO gifts(name,description,amount,category,icon,physical_enabled,product_url) VALUES(?,?,?,?,?,?,?)').run(name, description, amount, category, icon, fields.physical_enabled, fields.product_url);
+  }
   db.prepare('INSERT INTO settings VALUES(?,?)').run('seeded', '1');
   db.exec('COMMIT');
 }
@@ -147,8 +153,11 @@ const server = http.createServer(async (req, res) => {
         if (!Number.isFinite(input.amount) || input.amount < 1 || input.amount > 100000 || Math.round(input.amount * 100) / 100 !== input.amount) throw error('Informe um valor válido com até duas casas decimais.');
         if (!['casa', 'experiencias', 'simbolicos'].includes(input.category)) throw error('Categoria inválida.');
         const active = input.active ? 1 : 0;
-        if (input.id) db.prepare('UPDATE gifts SET name=?,description=?,amount=?,category=?,active=? WHERE id=?').run(name, description, input.amount, input.category, active, integer(input.id, 1, 1000000));
-        else db.prepare('INSERT INTO gifts(name,description,amount,category,icon,active) VALUES(?,?,?,?,?,?)').run(name, description, input.amount, input.category, 'dinner', active);
+        const previous = input.id ? db.prepare('SELECT * FROM gifts WHERE id=?').get(integer(input.id, 1, 1000000)) : undefined;
+        if (input.id && !previous) throw error('Presente não encontrado.', 404);
+        const fields = productFields(input, previous);
+        if (input.id) db.prepare('UPDATE gifts SET name=?,description=?,amount=?,category=?,active=?,physical_enabled=?,product_url=? WHERE id=?').run(name, description, input.amount, input.category, active, fields.physical_enabled, fields.product_url, input.id);
+        else db.prepare('INSERT INTO gifts(name,description,amount,category,icon,active,physical_enabled,product_url) VALUES(?,?,?,?,?,?,?,?)').run(name, description, input.amount, input.category, 'dinner', active, fields.physical_enabled, fields.product_url);
         return json(res, { ok: true });
       }
       if (req.method === 'POST' && route === '/api/admin/contributions') {

@@ -5,13 +5,14 @@ import { createHash } from 'node:crypto';
 import QRCode from 'qrcode';
 import { initialGifts, wedding } from './config.mjs';
 import { makePix } from './pix.mjs';
+import { catalogGift } from './lib/gift-options.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const output = path.join(root, 'dist');
 await rm(output, { recursive: true, force: true });
 await cp(path.join(root, 'public'), output, { recursive: true });
 await mkdir(path.join(output, 'static-data'), { recursive: true });
-const gifts = initialGifts.map(([name, description, amount, category, icon], index) => ({ id: index + 1, name, description, amount, category, icon, active: 1 }));
+const gifts = initialGifts.map(([name, description, amount, category, icon, options = {}], index) => catalogGift({ id: index + 1, name, description, amount, category, icon, active: 1, ...options }));
 await writeFile(path.join(output, 'static-data/gifts.json'), JSON.stringify({ gifts }));
 for (const gift of gifts) {
   const payload = makePix(gift.amount);
