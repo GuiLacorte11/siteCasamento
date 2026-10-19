@@ -171,6 +171,8 @@ figcaption { font: 400 14px/1.7 var(--body); margin-top: 14px; }
 .gift-illustration small { position: absolute; bottom: 13px; left: 17px; font-size: 10px; letter-spacing: .5px; color: var(--muted); font-weight: 700; }
 .gift-card h3 { font: 700 17px/1.5 var(--body); color: var(--wine); margin: 19px 0 8px; }
 .gift-description { font-size: var(--small-size); line-height: 1.65; color: var(--muted); margin-bottom: 19px; }
+.gift-ways { color: var(--wine); font-size: 13px; margin: 0 0 14px; }
+.gift-price-label { display: block; font-size: 11px; color: var(--muted); line-height: 1.5; }
 .gift-card-bottom { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-top: 1px solid var(--line); padding-top: 10px; margin-top: auto; }
 .gift-price { font-size: 16px; color: var(--green); font-weight: 700; }
 .gift-card-bottom button { font-size: 13px; display: inline-flex; gap: 8px; align-items: center; color: var(--wine); min-height: 44px; font-weight: 700; }
@@ -231,6 +233,16 @@ dialog::backdrop { background: #18221cc9; backdrop-filter: blur(4px); }
 .dialog-heading .eyebrow { color: var(--olive); font-size: var(--label-size); letter-spacing: 1.2px; }
 .dialog-heading h2 { font-size: 26px; line-height: 1.4; color: var(--wine); margin: 16px 0 10px; overflow-wrap: anywhere; }
 .dialog-heading .gift-price { font-size: 19px; }
+.gift-methods { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); margin: 24px 0; }
+.gift-methods button { min-height: 48px; padding: 12px 8px; font-size: 14px; font-weight: 700; color: var(--wine); }
+.gift-methods button + button { border-left: 1px solid var(--line); }
+.gift-methods button[aria-pressed="true"] { background: var(--wine); color: var(--paper); }
+.gift-product-panel { padding: 4px 0; }
+.gift-product-panel > .eyebrow { color: var(--olive); margin-bottom: 16px; }
+.gift-product-panel > p:not(.eyebrow) { font-size: 16px; line-height: 1.75; }
+.gift-product-panel > .button { margin: 24px 0; width: 100%; }
+.gift-product-panel > .gift-product-note { color: var(--muted); font-size: 14px; }
+.gift-product-panel > .text-link { margin-top: 16px; }
 .pix-area { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 27px; margin: 26px 0; align-items: center; }
 .pix-area > img { width: 200px; height: 200px; }
 .pix-area p { font-size: var(--small-size); line-height: 1.7; color: var(--muted); }

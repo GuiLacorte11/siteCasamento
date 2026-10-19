@@ -63,11 +63,23 @@ const drawings = {
 };
 function illustration(icon) { return `<svg viewBox="0 0 100 100" aria-hidden="true">${drawings[icon] || drawings.dinner}</svg>`; }
 let gifts = [], category = 'all', visible = 6, activeGift = null, invitation = null, dialogGeneration = 0, requestId;
+function physicalGift(gift) { return Boolean(gift.physical_enabled ?? (gift.category === 'casa')); }
+function productURL(gift) {
+  try { const url = new URL(gift.product_url); if (url.protocol === 'https:' && !url.username && !url.password) return url.href; } catch {}
+  return null;
+}
+function setGiftMethod(method) {
+  const product = method === 'product' && physicalGift(activeGift);
+  $('#gift-pix-panel').hidden = product; $('#gift-product-panel').hidden = !product;
+  $('#gift-dialog-amount').hidden = product; $('#gift-feedback').hidden = product;
+  document.querySelectorAll('[data-gift-method]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.giftMethod === (product ? 'product' : 'pix'))));
+}
+$('#gift-methods').addEventListener('click', event => { const button = event.target.closest('[data-gift-method]'); if (button && activeGift) setGiftMethod(button.dataset.giftMethod); });
 function renderGifts() {
   let selected = gifts.filter(g => category === 'all' || g.category === category);
   const sort = $('#gift-sort').value;
   if (sort !== 'default') selected = [...selected].sort((a,b) => sort === 'asc' ? a.amount - b.amount : b.amount - a.amount);
-  $('#gift-grid').innerHTML = selected.slice(0, visible).map(g => `<article class="gift-card"><div class="gift-illustration">${illustration(g.icon)}<small>${categoryLabels[g.category]}</small></div><h3>${escapeHTML(g.name)}</h3><p class="gift-description">${escapeHTML(g.description)}</p><div class="gift-card-bottom"><p class="gift-price">${money(g.amount)}</p><button type="button" data-gift="${g.id}" aria-label="Presentear: ${escapeHTML(g.name)}">PRESENTEAR <span>↗</span></button></div></article>`).join('') || '<p>Nenhum presente nesta categoria.</p>';
+  $('#gift-grid').innerHTML = selected.slice(0, visible).map(g => `<article class="gift-card"><div class="gift-illustration">${illustration(g.icon)}<small>${categoryLabels[g.category]}</small></div><h3>${escapeHTML(g.name)}</h3><p class="gift-description">${escapeHTML(g.description)}</p><p class="gift-ways">${physicalGift(g) ? 'Pix ou produto' : 'Contribuição por Pix'}</p><div class="gift-card-bottom"><div><span class="gift-price-label">Pix sugerido</span><p class="gift-price">${money(g.amount)}</p></div><button type="button" data-gift="${g.id}" aria-label="Presentear: ${escapeHTML(g.name)}">Escolher <span>↗</span></button></div></article>`).join('') || '<p>Nenhum presente nesta categoria.</p>';
   $('#more-gifts').hidden = selected.length <= visible;
 }
 async function loadGifts() { try { gifts = (await api('/api/gifts')).gifts; renderGifts(); } catch(e) { $('#gift-grid').textContent = e.message + ' Atualize a página para tentar novamente.'; } }
@@ -80,7 +92,14 @@ $('#gift-grid').addEventListener('click', async event => {
   activeGift = gifts.find(g => g.id === Number(button.dataset.gift));
   const generation = ++dialogGeneration;
   $('#gift-dialog-title').textContent = activeGift.name;
-  $('#gift-dialog-amount').textContent = money(activeGift.amount);
+  $('#gift-dialog-amount').textContent = 'Pix sugerido: ' + money(activeGift.amount);
+  $('#gift-methods').hidden = !physicalGift(activeGift);
+  const storeURL = productURL(activeGift);
+  $('#gift-product-link').href = storeURL || 'https://www.amazon.com.br/s?k=' + encodeURIComponent(activeGift.name);
+  $('#gift-product-link').textContent = storeURL ? 'Ver produto na loja ↗' : 'Ver opções na Amazon ↗';
+  $('#gift-product-description').textContent = storeURL ? 'Confira o modelo e o preço diretamente na loja. A compra é feita por lá.' : 'Veja opções deste item na Amazon. O modelo ainda não foi definido; confira os detalhes com os noivos.';
+  $('#gift-delivery-link').href = 'https://wa.me/5531991470557?text=' + encodeURIComponent('Olá! Gostaria de presentear vocês com o produto ' + activeGift.name + '. Podemos combinar o modelo e a entrega?');
+  setGiftMethod('pix');
   $('#gift-message-form').reset(); $('#gift-message-form').hidden = false; $('#gift-message-form button').disabled = true;
   $('#gift-dialog .dialog-note').textContent = originalGiftNote;
   $('#pix-qr').hidden = true; $('#pix-payload').value = ''; $('#copy-pix').disabled = true; $('#copy-key').disabled = true;
@@ -88,7 +107,7 @@ $('#gift-grid').addEventListener('click', async event => {
   try {
     const pix = await api(`/api/gifts/${activeGift.id}/pix`);
     if (generation !== dialogGeneration || !$('#gift-dialog').open) return;
-    activeGift.amount = pix.amount; $('#gift-dialog-amount').textContent = money(pix.amount);
+    activeGift.amount = pix.amount; $('#gift-dialog-amount').textContent = 'Pix sugerido: ' + money(pix.amount);
     $('#pix-qr').src = pix.qr; $('#pix-qr').hidden = false; $('#pix-payload').value = pix.payload;
     $('#copy-pix').disabled = false; $('#copy-key').disabled = false; $('#copy-key').dataset.key = pix.key;
     $('#gift-message-form button').disabled = false; feedback('#gift-feedback', '');
