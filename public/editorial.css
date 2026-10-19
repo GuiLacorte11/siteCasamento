@@ -6,7 +6,7 @@
 :root {
   --wine: #321018; --paper: #f0eee5; --olive: #666b4b; --green: #29362b;
   --ink: #33352e; --muted: #565c4f; --line: #ceccbe;
-  --serif: LeJour, Georgia, serif; --body: Lato, Arial, sans-serif;
+  --serif: LeJour, serif; --body: Lato, sans-serif; --script: Sloop, cursive;
   --section-space: clamp(64px, 7vw, 96px);
   --copy-size: 16px; --small-size: 14px; --label-size: 11px;
   --title-size: clamp(26px, 2.5vw, 32px); --copy-leading: 1.75;
@@ -23,7 +23,7 @@ img { display: block; max-width: 100%; }
 h1, h2, h3, p, figure, blockquote { margin: 0; }
 h1, h2, h3 { font-weight: 400; }
 h2 { font: 400 var(--title-size)/1.4 var(--serif); letter-spacing: 0; text-wrap: balance; }
-h2 em, blockquote em { font-family: Georgia, serif; font-weight: 400; }
+h2 em, blockquote em { font-family: var(--script); font-size: 1.3em; font-style: normal; font-weight: 400; line-height: 1.1; }
 p + p { margin-top: 16px; }
 [hidden] { display: none !important; }
 ::selection { background: #aa9a78; color: var(--wine); }
@@ -32,7 +32,7 @@ p + p { margin-top: 16px; }
 .skip:focus { top: 10px; }
 .page-width { width: min(1120px, 84%); margin: 0 auto; }
 .eyebrow { font: 700 var(--label-size)/1.6 var(--body); letter-spacing: 1.2px; }
-.little-note { font: italic 19px/1.8 Georgia, serif; }
+.little-note { font: 400 26px/1.6 var(--script); }
 .text-link { display: inline-flex; align-items: center; gap: 24px; padding: 8px 0; border-bottom: 1px solid currentColor; font-size: 13px; line-height: 1.8; }
 .text-link span { font-size: 17px; }
 .text-link:hover { opacity: .7; }
@@ -48,7 +48,7 @@ p + p { margin-top: 16px; }
 .brand { display: flex; gap: 14px; align-items: center; }
 .brand img { width: 44px; height: 84px; object-fit: contain; filter: invert(1); mix-blend-mode: screen; }
 .brand > span { display: block; font-size: 12px; font-weight: 700; letter-spacing: 1.6px; white-space: nowrap; }
-.brand i { font: italic 16px Georgia, serif; margin: 0 5px; }
+.brand i { font: 400 23px/1 var(--script); margin: 0 5px; }
 .header nav { display: flex; gap: 26px; align-items: center; font-size: 13px; }
 .header nav a { padding: 8px 0; }
 .nav-cta { border-bottom: 1px solid #f0eee57a; }
@@ -72,12 +72,12 @@ p + p { margin-top: 16px; }
 .story-heading { text-align: center; max-width: 760px; padding-top: 7px; }
 .story-heading .eyebrow { color: #c8bda2; font-size: var(--label-size); letter-spacing: 1.2px; }
 .story-heading h2 { margin: 20px 0 16px; font-size: var(--title-size); line-height: 1.4; }
-.story-heading .little-note { color: #d4c5b7; font-size: 16px; }
+.story-heading .little-note { color: #d4c5b7; font-size: 26px; }
 .ornate-frame { --frame-width: clamp(24px, 5vw, 56px); position: relative; padding: var(--frame-width); }
 .ornate-frame-border { position: absolute; inset: 0; border: var(--frame-width) solid transparent; border-image: url('/assets/moldura-ornamentada-horizontal.svg') 108 118 110 114 / var(--frame-width) stretch; mix-blend-mode: screen; pointer-events: none; }
 .story-photo { width: min(880px, 100%); }
 .story-photo img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 60%; }
-figcaption { font: italic 12px/1.8 Georgia, serif; margin-top: 14px; font-size: 14px; line-height: 1.7; }
+figcaption { font: 400 14px/1.7 var(--body); margin-top: 14px; }
 .story-copy { width: 100%; color: #e9e1d9; font-size: var(--copy-size); line-height: var(--copy-leading); max-width: 64ch; text-align: left; }
 .story-copy p + p { margin-top: 24px; }
 .shell { width: 68px; height: auto; filter: invert(1); mix-blend-mode: screen; opacity: .85; margin: 25px 0 12px; }
@@ -85,7 +85,7 @@ figcaption { font: italic 12px/1.8 Georgia, serif; margin-top: 14px; font-size: 
 .story-closing { text-align: center; padding: 20px 0 56px; }
 .story-closing > span { font-size: var(--label-size); letter-spacing: 1.2px; color: #d5c6b6; }
 .story-closing p { font: 22px/1.7 var(--serif); margin: 18px 0; font-size: 22px; line-height: 1.6; }
-.story-closing em { font-family: Georgia, serif; }
+.story-closing em { font-family: var(--script); font-size: 1.3em; font-style: normal; }
 /* A portrait and its heading on cream paper; the table illustration follows on green. */
 .table-editorial { position: relative; padding: var(--section-space) 0; }
 .table-editorial::before, .table-editorial::after { content: ''; position: absolute; left: 0; width: 100%; height: 64px; z-index: 1; pointer-events: none; background: url('/assets/renda-floral-horizontal.svg') center / 320px 64px repeat-x; filter: drop-shadow(0 2px 2px #32101818); }
@@ -102,7 +102,7 @@ figcaption { font: italic 12px/1.8 Georgia, serif; margin-top: 14px; font-size: 
 .table-symbol { width: min(640px, 100%); margin: 30px auto 22px; }
 .table-symbol img { width: 100%; height: auto; filter: invert(1); opacity: .88; }
 .table-copy { max-width: 58ch; margin: 28px auto 0; font-size: var(--copy-size); line-height: var(--copy-leading); color: #eeeade; }
-.table-copy .little-note { display: block; margin-top: 25px; color: var(--paper); font-size: 18px; }
+.table-copy .little-note { display: block; margin-top: 25px; color: var(--paper); font-size: 26px; }
 .vow-copy .eyebrow { color: #e2dccb; font-size: var(--label-size); letter-spacing: 1.2px; }
 .vow-copy blockquote { font: 21px/1.65 var(--serif); margin: 24px auto 0; max-width: 760px; text-wrap: balance; font-size: 22px; line-height: 1.65; }
 
@@ -114,8 +114,8 @@ figcaption { font: italic 12px/1.8 Georgia, serif; margin-top: 14px; font-size: 
 .day-heading > p:last-child { color: #ece9db; font-size: var(--copy-size); line-height: var(--copy-leading); }
 .day-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 830px; margin: 48px auto; text-align: center; }
 .date-editorial { border-right: 1px solid #f0eee54a; padding: 5px 45px 12px; }
-.date-month { font: italic 26px/1.8 Georgia, serif; margin-top: 20px; }
-.big-day { font: 84px/1.1 Georgia, serif; margin: 7px 0 0; }
+.date-month { font: 400 36px/1.5 var(--script); margin-top: 20px; }
+.big-day { font: 84px/1.1 var(--serif); margin: 7px 0 0; }
 .date-year { font: 22px/1.5 var(--serif); letter-spacing: 5px; margin-top: 3px; }
 .date-time { font-size: 12px; letter-spacing: 1.2px; margin: 17px 0; }
 .date-time span { margin: 0 8px; }
@@ -129,9 +129,9 @@ figcaption { font: italic 12px/1.8 Georgia, serif; margin-top: 14px; font-size: 
 .countdown { border-top: 1px solid #f0eee54a; max-width: 830px; margin: 0 auto; padding-top: 28px; text-align: center; }
 .countdown .eyebrow { font-size: var(--label-size); letter-spacing: 1.2px; }
 .countdown-values { display: flex; justify-content: center; align-items: center; gap: 26px; margin-top: 24px; }
-.countdown-values strong { display: block; font: 34px/1.3 Georgia, serif; min-width: 58px; font-variant-numeric: tabular-nums; }
+.countdown-values strong { display: block; font: 34px/1.3 var(--body); min-width: 58px; font-variant-numeric: tabular-nums; }
 .countdown-values span { font-size: 10px; letter-spacing: .7px; }
-.countdown-values b { font: 22px Georgia, serif; opacity: .65; padding-bottom: 8px; }
+.countdown-values b { font: 22px var(--body); opacity: .65; padding-bottom: 8px; }
 
 .dress-code-section { padding: clamp(52px, 5vw, 72px) 0; background: #606145 url('/assets/textura-papel-oliva.svg') repeat; color: #f7f4eb; }
 .dress-code-layout { width: min(500px, 94%); margin: 0 auto; }
@@ -219,7 +219,7 @@ figcaption { font: italic 12px/1.8 Georgia, serif; margin-top: 14px; font-size: 
 .faq details p { font-size: var(--copy-size); line-height: var(--copy-leading); max-width: 64ch; padding-bottom: 22px; color: var(--muted); }
 .footer { padding: 55px 8% 28px; background: var(--wine); text-align: center; color: var(--paper); }
 .footer > img { width: 220px; height: auto; margin: 0 auto 23px; filter: invert(1); mix-blend-mode: screen; }
-.footer > p { font: italic 16px/1.8 Georgia, serif; color: #e3d7cd; font-size: 16px; }
+.footer > p { font: 400 16px/1.8 var(--body); color: #e3d7cd; }
 .footer > .eyebrow { display: block; color: #d6c8b8; font-size: 11px; margin-top: 15px; letter-spacing: .8px; }
 .footer-bottom { max-width: 1120px; margin: 38px auto 0; border-top: 1px solid #a98c7e40; padding-top: 22px; display: flex; gap: 26px; align-items: center; color: #e2d4c6; font-size: 13px; text-align: left; line-height: 1.7; }
 .footer-bottom > span { margin-right: auto; font-size: 11px; letter-spacing: .6px; }
@@ -290,7 +290,7 @@ dialog::backdrop { background: #18221cc9; backdrop-filter: blur(4px); }
   .story-heading { padding-top: 0; }
   .story-heading h2 { font-size: var(--title-size); line-height: 1.4; margin: 20px 0 16px; }
   .story-heading .eyebrow { font-size: var(--label-size); letter-spacing: 1.2px; }
-  .story-heading .little-note { font-size: 15px; }
+  .story-heading .little-note { font-size: 24px; }
   .story-photo { width: 100%; }
   .story-copy { font-size: var(--copy-size); line-height: var(--copy-leading); max-width: 60ch; color: #e9e1d9; }
   .shell { margin-top: 24px; }
