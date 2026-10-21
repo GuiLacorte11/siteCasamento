@@ -69,7 +69,7 @@ p + p { margin-top: 16px; }
 /* A welcome on dark olive precedes the uncropped panoramic photograph. */
 .welcome { padding: 0; background: #202719; color: var(--paper); }
 .welcome-heading { padding: clamp(64px, 8vw, 112px) 5%; text-align: center; }
-.welcome-heading h2 { font-family: var(--body); font-size: clamp(17px, 2.5vw, 32px); text-transform: uppercase; }
+.welcome-heading h2 { font-size: clamp(17px, 2.5vw, 32px); }
 .welcome-photo { width: 100%; height: auto; }
 figcaption { font: 400 14px/1.7 var(--body); margin-top: 14px; }
 .shell { width: 68px; height: auto; filter: invert(1); mix-blend-mode: screen; opacity: .85; margin: 25px 0 12px; }
