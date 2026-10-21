@@ -66,15 +66,9 @@ p + p { margin-top: 16px; }
 .masthead-bottom { position: absolute; inset: auto 6% 46px; display: flex; align-items: end; justify-content: center; gap: 24px; text-align: center; }
 .masthead-bottom p { max-width: 100%; font: clamp(12px, 1.15vw, 15px)/1.7 var(--body); text-transform: uppercase; text-wrap: balance; }
 
-/* A framed photograph and a welcome on the supplied wine fabric texture. */
-.welcome { background: var(--wine) url('/assets/textura-vinho.jpg') center / cover; color: var(--paper); padding: var(--section-space) 0; }
-.story-spread { display: flex; flex-direction: column; align-items: center; gap: 28px; }
-.story-heading { text-align: center; max-width: 760px; }
-.story-heading h2 { margin: 0; font-size: var(--title-size); line-height: 1.4; }
-.ornate-frame { --frame-width: clamp(24px, 5vw, 56px); position: relative; padding: var(--frame-width); }
-.ornate-frame-border { position: absolute; inset: 0; border: var(--frame-width) solid transparent; border-image: url('/assets/moldura-ornamentada-horizontal.svg') 108 118 110 114 / var(--frame-width) stretch; mix-blend-mode: screen; pointer-events: none; }
-.story-photo { width: min(880px, 100%); }
-.story-photo img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 60%; }
+/* The supplied panoramic photograph fills this section without a frame or crop. */
+.welcome { padding: 0; }
+.welcome-photo { width: 100%; height: auto; }
 figcaption { font: 400 14px/1.7 var(--body); margin-top: 14px; }
 .shell { width: 68px; height: auto; filter: invert(1); mix-blend-mode: screen; opacity: .85; margin: 25px 0 12px; }
 /* A portrait and its heading on cream paper; the table illustration follows on green. */
@@ -254,7 +248,6 @@ dialog::backdrop { background: #18221cc9; backdrop-filter: blur(4px); }
 @media (max-width: 1100px) {
   .header nav { gap: 22px; font-size: 13px; }
   .page-width { width: 86%; }
-  .story-heading h2 { font-size: var(--title-size); line-height: 1.4; }
   .table-spread { gap: 7%; }
   .gifts-section { padding-left: 7%; padding-right: 7%; }
   .gift-grid { gap: 35px 26px; }
@@ -269,7 +262,6 @@ dialog::backdrop { background: #18221cc9; backdrop-filter: blur(4px); }
   .header nav.open { display: flex; }
 }
 @media (max-width: 800px) {
-  .story-heading h2 { font-size: var(--title-size); line-height: 1.4; }
   .table-heading h2 { font-size: var(--title-size); line-height: 1.4; }
   .venue { padding-left: 28px; padding-right: 10px; }
   .date-editorial { padding-right: 28px; padding-left: 10px; }
@@ -288,11 +280,6 @@ dialog::backdrop { background: #18221cc9; backdrop-filter: blur(4px); }
   .masthead-date { font-size: 7px; letter-spacing: 1px; }
   .masthead-date span { margin: 0 8px; }
   .masthead-bottom { inset: auto 7% 27px; flex-direction: column; align-items: center; text-align: center; gap: 17px; }
-  .welcome { padding: 45px 0 64px; }
-  .story-spread { gap: 25px; }
-  .story-heading { padding-top: 0; }
-  .story-heading h2 { font-size: var(--title-size); line-height: 1.4; }
-  .story-photo { width: 100%; }
   .shell { margin-top: 24px; }
   .table-editorial { padding: 65px 0 67px; }
   .table-editorial::before, .table-editorial::after { height: 48px; background-size: 240px 48px; }
@@ -379,7 +366,7 @@ dialog::backdrop { background: #18221cc9; backdrop-filter: blur(4px); }
   :root { --title-size: 24px; }
   .brand { gap: 10px; }
   .masthead-date { font-size: 6px; }
-  .story-heading h2, .day-heading h2, .rsvp-intro h2 { font-size: var(--title-size); line-height: 1.4; }
+  .day-heading h2, .rsvp-intro h2 { font-size: var(--title-size); line-height: 1.4; }
   .table-heading h2 { font-size: var(--title-size); line-height: 1.4; }
   .gift-grid { gap: 27px 14px; }
   .gift-card h3 { font-size: 17px; }
