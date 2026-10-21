@@ -44,9 +44,9 @@ p + p { margin-top: 16px; }
 .button:hover { background: #8a8265; color: white; }
 
 /* The opening is a photograph with a quiet, centered masthead. */
-.header { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; min-height: 116px; padding: 16px 4.5%; color: var(--paper); }
+.header { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; min-height: 136px; padding: 16px 4.5%; color: var(--paper); }
 .brand { display: flex; gap: 14px; align-items: center; }
-.brand img { width: 44px; height: 84px; object-fit: contain; filter: invert(1); mix-blend-mode: screen; }
+.brand img { width: 54px; height: 102px; object-fit: contain; filter: invert(1); mix-blend-mode: screen; }
 .brand > span { display: block; font-size: 12px; font-weight: 700; letter-spacing: 1.6px; white-space: nowrap; }
 .brand i { font: 400 23px/1 var(--script); margin: 0 5px; }
 .header nav { display: flex; gap: 26px; align-items: center; font-size: 13px; }
@@ -64,7 +64,7 @@ p + p { margin-top: 16px; }
 .masthead-date { font-size: 8px; letter-spacing: 1.9px; }
 .masthead-date span { margin: 0 13px; }
 .masthead-bottom { position: absolute; inset: auto 6% 46px; display: flex; align-items: end; justify-content: center; gap: 24px; text-align: center; }
-.masthead-bottom p { max-width: 100%; font: clamp(4px, .95vw, 12px)/1.5 var(--body); text-transform: uppercase; white-space: nowrap; }
+.masthead-bottom p { max-width: 100%; font: clamp(12px, 1.15vw, 15px)/1.7 var(--body); text-transform: uppercase; text-wrap: balance; }
 
 /* An editorial spread, with each photograph and paragraph in its own grid cell. */
 .welcome { background: var(--wine); color: var(--paper); padding-top: var(--section-space); }
@@ -269,9 +269,9 @@ dialog::backdrop { background: #18221cc9; backdrop-filter: blur(4px); }
   .gift-grid { gap: 35px 26px; }
 }
 @media (max-width: 1000px) {
-  .header { min-height: 100px; padding: 12px 6%; }
+  .header { min-height: 116px; padding: 12px 6%; }
   .brand > span { font-size: 11px; letter-spacing: 1.2px; }
-  .brand img { width: 40px; height: 76px; }
+  .brand img { width: 48px; height: 92px; }
   .menu-button { display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 11px; letter-spacing: 1px; }
   .menu-button span { font-size: 17px; }
   .header nav { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 28px 7%; background: var(--wine); flex-direction: column; align-items: flex-start; gap: 16px; border-bottom: 1px solid #a98c7e40; font-size: 13px; }
@@ -288,9 +288,9 @@ dialog::backdrop { background: #18221cc9; backdrop-filter: blur(4px); }
   :root { --title-size: 26px; }
   html { scroll-padding-top: 18px; }
   .page-width { width: 86%; }
-  .header { min-height: 92px; padding: 12px 6%; }
+  .header { min-height: 104px; padding: 12px 6%; }
   .brand > span { font-size: 10px; letter-spacing: .9px; }
-  .brand img { width: 36px; height: 68px; }
+  .brand img { width: 42px; height: 80px; }
   .masthead { height: 91svh; min-height: 660px; max-height: 850px; }
   .masthead-photo { object-position: 50% 47%; }
   .masthead h1 { width: 78%; max-width: 360px; }
