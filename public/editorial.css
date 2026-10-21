@@ -67,8 +67,8 @@ p + p { margin-top: 16px; }
 .masthead-bottom p { max-width: 100%; font: clamp(12px, 1.15vw, 15px)/1.7 var(--body); text-transform: uppercase; text-wrap: balance; }
 
 /* A welcome on dark olive precedes the uncropped panoramic photograph. */
-.welcome { padding: 0; background: #353a28; color: var(--paper); }
-.welcome-heading { padding: clamp(32px, 4.5vw, 64px) 5%; text-align: center; }
+.welcome { padding: 0; background: #202719; color: var(--paper); }
+.welcome-heading { padding: clamp(64px, 8vw, 112px) 5%; text-align: center; }
 .welcome-heading h2 { font-size: clamp(17px, 2.5vw, 32px); }
 .welcome-photo { width: 100%; height: auto; }
 figcaption { font: 400 14px/1.7 var(--body); margin-top: 14px; }
