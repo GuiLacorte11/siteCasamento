@@ -4,11 +4,11 @@
 @font-face { font-family: Lato; src: url('/fonts/Lato-Bold-Official.ttf') format('truetype'); font-weight: 700; font-display: swap; }
 
 :root {
-  /* Brand board supplied on 26 October 2026. */
-  --wine: #630c1e; --wine-deep: #4a0404;
-  --olive: #6e712d; --green: #3e441e; --white: #ffffff;
-  --paper: #faf9f6; --surface: #eef0e7; --ink: #26281f;
-  --muted: #626452; --line: #3e441e26;
+  /* Muted shades of the brand palette: ivory and grey olive lead; wine is a small accent. */
+  --wine: #745d62; --wine-deep: #5b464b;
+  --olive: #666e61; --green: #3d443c; --white: #ffffff;
+  --paper: #f7f3ed; --surface: #ecebe4; --ink: #2e322e;
+  --muted: #62665d; --line: #3d443c26;
   --serif: LeJour, serif; --body: Lato, sans-serif; --script: Sloop, cursive;
   --section-space: clamp(64px, 7vw, 96px);
   --copy-size: 16px; --small-size: 14px; --label-size: 11px;
@@ -29,9 +29,9 @@ h2 { font: 400 var(--title-size)/1.4 var(--serif); letter-spacing: 0; text-wrap:
 h2 em, blockquote em { font-family: var(--script); font-size: 1.3em; font-style: normal; font-weight: 400; line-height: 1.1; }
 p + p { margin-top: 16px; }
 [hidden] { display: none !important; }
-::selection { background: var(--wine); color: var(--paper); }
+::selection { background: var(--green); color: var(--paper); }
 :focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
-.skip { position: fixed; top: -100px; left: 20px; z-index: 100; padding: 10px 16px; background: var(--paper); color: var(--wine); }
+.skip { position: fixed; top: -100px; left: 20px; z-index: 100; padding: 10px 16px; background: var(--paper); color: var(--green); }
 .skip:focus { top: 10px; }
 .page-width { width: min(1120px, 84%); margin: 0 auto; }
 .eyebrow { font: 700 var(--label-size)/1.6 var(--body); letter-spacing: 1.2px; }
@@ -41,10 +41,10 @@ p + p { margin-top: 16px; }
 .text-link:hover { opacity: .7; }
 .button { display: inline-flex; justify-content: space-between; align-items: center; min-height: 49px; padding: 14px 24px; gap: 25px; font: 700 13px/1.6 var(--body); letter-spacing: .35px; transition: background .2s; }
 .button span { font-size: 18px; }
-.wine { color: var(--paper); background: var(--wine); }
-.cream { background: var(--paper); color: var(--wine); }
-.outline { border: 1px solid var(--wine); color: var(--wine); }
-.button:hover { background: var(--wine-deep); color: var(--paper); }
+.wine { color: var(--paper); background: var(--green); }
+.cream { background: var(--paper); color: var(--green); }
+.outline { border: 1px solid var(--green); color: var(--green); }
+.button:hover { background: var(--ink); color: var(--paper); }
 
 /* The opening is a photograph with a quiet, centered masthead. */
 .header { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; min-height: 136px; padding: 16px 4.5%; color: var(--paper); }
@@ -148,8 +148,8 @@ figcaption { font: 400 14px/1.7 var(--body); margin-top: 14px; }
 .gift-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); margin: 52px 0 32px; padding-bottom: 13px; }
 .filters { display: flex; flex-wrap: wrap; gap: 24px; }
 .filter { position: relative; font-size: 13px; color: var(--muted); padding: 8px 0; }
-.filter.active { color: var(--wine); }
-.filter.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -14px; height: 1px; background: var(--wine); }
+.filter.active { color: var(--green); }
+.filter.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -14px; height: 1px; background: var(--green); }
 .sort-label { font-size: 12px; color: var(--muted); white-space: nowrap; }
 .sort-label select { background: transparent; border: 0; color: var(--ink); font-size: 14px; padding: 10px 0 10px 8px; max-width: 165px; }
 .gift-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 36px; }
@@ -165,13 +165,13 @@ figcaption { font: 400 14px/1.7 var(--body); margin-top: 14px; }
 .gift-price-label { display: block; font-size: 11px; color: var(--muted); line-height: 1.5; }
 .gift-card-bottom { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-top: 1px solid var(--line); padding-top: 10px; margin-top: auto; }
 .gift-price { font-size: 16px; color: var(--green); font-weight: 700; }
-.gift-card-bottom button { font-size: 13px; display: inline-flex; gap: 8px; align-items: center; color: var(--wine); min-height: 44px; font-weight: 700; }
+.gift-card-bottom button { font-size: 13px; display: inline-flex; gap: 8px; align-items: center; color: var(--green); min-height: 44px; font-weight: 700; }
 .gift-card-bottom button span { font-size: 18px; }
 .gift-card-bottom button:hover { text-decoration: underline; }
 .gift-more { text-align: center; margin-top: 45px; }
 .gift-footnote { color: var(--muted); font-size: var(--small-size); text-align: center; max-width: 650px; margin: 25px auto 0; line-height: 1.7; }
 
-/* Repeat the welcome olive in the invitation, keeping wine for actions. */
+/* Repeat the grey olive in the invitation and its actions. */
 .rsvp-editorial { padding: var(--section-space) 8%; background: var(--green); color: var(--paper); }
 .rsvp-intro { text-align: center; }
 .rsvp-intro .eyebrow { color: #ffffffd9; font-size: var(--label-size); letter-spacing: 1.2px; }
@@ -209,7 +209,7 @@ figcaption { font: 400 14px/1.7 var(--body); margin-top: 14px; }
 .faq summary span { font-family: var(--body); font-size: 20px; }
 .faq details[open] summary span { transform: rotate(45deg); }
 .faq details p { font-size: var(--copy-size); line-height: var(--copy-leading); max-width: 64ch; padding-bottom: 22px; color: var(--muted); }
-.brand-pattern-divider { height: clamp(40px, 5vw, 64px); background: var(--paper) url('/assets/estampa-conchas-identidade.png') center / 420px auto repeat-x; background-blend-mode: multiply; }
+.brand-pattern-divider { height: clamp(40px, 5vw, 64px); background: var(--paper) url('/assets/estampa-conchas-identidade.png') center / 420px auto repeat-x; background-blend-mode: multiply; filter: grayscale(1); opacity: .38; }
 .footer { padding: 55px 8% 28px; background: var(--paper); text-align: center; color: var(--green); }
 .footer > img { width: 220px; height: auto; margin: 0 auto 23px; mix-blend-mode: multiply; }
 .footer > p { font: 400 16px/1.8 var(--body); color: var(--muted); }
@@ -225,9 +225,9 @@ dialog::backdrop { background: #000000c9; backdrop-filter: blur(4px); }
 .dialog-heading h2 { font-size: 26px; line-height: 1.4; color: var(--green); margin: 16px 0 10px; overflow-wrap: anywhere; }
 .dialog-heading .gift-price { font-size: 19px; }
 .gift-methods { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); margin: 24px 0; }
-.gift-methods button { min-height: 48px; padding: 12px 8px; font-size: 14px; font-weight: 700; color: var(--wine); }
+.gift-methods button { min-height: 48px; padding: 12px 8px; font-size: 14px; font-weight: 700; color: var(--green); }
 .gift-methods button + button { border-left: 1px solid var(--line); }
-.gift-methods button[aria-pressed="true"] { background: var(--wine); color: var(--paper); }
+.gift-methods button[aria-pressed="true"] { background: var(--green); color: var(--paper); }
 .gift-product-panel { padding: 4px 0; }
 .gift-product-panel > .eyebrow { color: var(--olive); margin-bottom: 16px; }
 .gift-product-panel > p:not(.eyebrow) { font-size: 16px; line-height: 1.75; }
