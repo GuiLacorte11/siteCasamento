@@ -4,8 +4,10 @@
 @font-face { font-family: Lato; src: url('/fonts/Lato-Bold-Official.ttf') format('truetype'); font-weight: 700; font-display: swap; }
 
 :root {
-  --wine: #321018; --paper: #f0eee5; --olive: #666b4b; --green: #29362b;
-  --ink: #33352e; --muted: #565c4f; --line: #ceccbe;
+  /* Brand board supplied on 26 October 2026. */
+  --wine: #630c1e; --wine-deep: #4a0404; --paper: #ffffff;
+  --olive: #6e712d; --green: #3e441e; --ink: #000000;
+  --muted: #3e441e; --line: #3e441e33;
   --serif: LeJour, serif; --body: Lato, sans-serif; --script: Sloop, cursive;
   --section-space: clamp(64px, 7vw, 96px);
   --copy-size: 16px; --small-size: 14px; --label-size: 11px;
@@ -26,8 +28,8 @@ h2 { font: 400 var(--title-size)/1.4 var(--serif); letter-spacing: 0; text-wrap:
 h2 em, blockquote em { font-family: var(--script); font-size: 1.3em; font-style: normal; font-weight: 400; line-height: 1.1; }
 p + p { margin-top: 16px; }
 [hidden] { display: none !important; }
-::selection { background: #aa9a78; color: var(--wine); }
-:focus-visible { outline: 2px solid #b6a780; outline-offset: 5px; }
+::selection { background: var(--wine); color: var(--paper); }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
 .skip { position: fixed; top: -100px; left: 20px; z-index: 100; padding: 10px 16px; background: var(--paper); color: var(--wine); }
 .skip:focus { top: 10px; }
 .page-width { width: min(1120px, 84%); margin: 0 auto; }
@@ -41,7 +43,7 @@ p + p { margin-top: 16px; }
 .wine { color: var(--paper); background: var(--wine); }
 .cream { background: var(--paper); color: var(--wine); }
 .outline { border: 1px solid var(--wine); color: var(--wine); }
-.button:hover { background: #8a8265; color: white; }
+.button:hover { background: var(--green); color: var(--paper); }
 
 /* The opening is a photograph with a quiet, centered masthead. */
 .header { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; min-height: 136px; padding: 16px 4.5%; color: var(--paper); }
@@ -51,12 +53,12 @@ p + p { margin-top: 16px; }
 .brand i { font: 400 23px/1 var(--script); margin: 0 5px; }
 .header nav { display: flex; gap: 26px; align-items: center; font-size: 13px; }
 .header nav a { padding: 8px 0; }
-.nav-cta { border-bottom: 1px solid #f0eee57a; }
+.nav-cta { border-bottom: 1px solid #ffffff7a; }
 .nav-cta span { margin-left: 16px; }
 .menu-button { display: none; font-size: 11px; }
 .masthead { min-height: 710px; height: 96svh; max-height: 960px; position: relative; background: var(--green); color: var(--paper); isolation: isolate; }
 .masthead-photo { position: absolute; width: 100%; height: 100%; inset: 0; object-fit: cover; object-position: 50% 42%; z-index: -2; }
-.masthead::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(#19241d73, #2630290d 48%, #152019b8); }
+.masthead::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(#3e441e73, #3e441e0d 48%, #000000b8); }
 .masthead-identity { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; }
 /* Compensate for the original logo's uneven transparent margins. */
 .masthead h1 { width: min(420px, 70%); margin: 0; line-height: 1; }
@@ -67,8 +69,9 @@ p + p { margin-top: 16px; }
 .masthead-bottom p { max-width: 100%; font: clamp(12px, 1.15vw, 15px)/1.7 var(--body); text-transform: uppercase; text-wrap: balance; }
 
 /* A welcome on dark olive precedes the uncropped panoramic photograph. */
-.welcome { padding: 0; background: #202719; color: var(--paper); }
-.welcome-heading { padding: clamp(64px, 8vw, 112px) 5%; text-align: center; }
+.welcome { padding: 0; background: var(--green); color: var(--paper); }
+.welcome-heading { position: relative; padding: clamp(64px, 8vw, 112px) 5%; text-align: center; }
+.welcome-heading::after { content: ""; position: absolute; inset: auto 0 0; height: 24px; background: repeating-linear-gradient(90deg, var(--wine) 0 12px, var(--olive) 12px 24px); }
 .welcome-heading h2 { font-size: clamp(17px, 2.5vw, 32px); }
 .welcome-photo { width: 100%; height: auto; }
 figcaption { font: 400 14px/1.7 var(--body); margin-top: 14px; }
@@ -88,9 +91,9 @@ figcaption { font: 400 14px/1.7 var(--body); margin-top: 14px; }
 .vow-banner { background: var(--green); color: var(--paper); padding: var(--section-space) 0; text-align: center; }
 .table-symbol { width: min(640px, 100%); margin: 30px auto 22px; }
 .table-symbol img { width: 100%; height: auto; filter: invert(1); opacity: .88; }
-.table-copy { max-width: 58ch; margin: 28px auto 0; font-size: var(--copy-size); line-height: var(--copy-leading); color: #eeeade; }
+.table-copy { max-width: 58ch; margin: 28px auto 0; font-size: var(--copy-size); line-height: var(--copy-leading); color: #ffffffd9; }
 .table-copy .little-note { display: block; margin-top: 25px; color: var(--paper); font-size: 26px; }
-.vow-copy .eyebrow { color: #e2dccb; font-size: var(--label-size); letter-spacing: 1.2px; }
+.vow-copy .eyebrow { color: #ffffffd9; font-size: var(--label-size); letter-spacing: 1.2px; }
 .vow-copy blockquote { font: 21px/1.65 var(--serif); margin: 24px auto 0; max-width: 760px; text-wrap: balance; font-size: 22px; line-height: 1.65; }
 
 /* A centered invitation on a black background. */
@@ -98,9 +101,9 @@ figcaption { font: 400 14px/1.7 var(--body); margin-top: 14px; }
 .day-heading { text-align: center; }
 .day-monogram { filter: invert(1); mix-blend-mode: screen; width: 29px; height: auto; margin: 0 auto 28px; }
 .day-heading h2 { margin: 20px 0 16px; font-size: var(--title-size); line-height: 1.4; }
-.day-heading > p:last-child { color: #ece9db; font-size: var(--copy-size); line-height: var(--copy-leading); }
+.day-heading > p:last-child { color: #ffffffd9; font-size: var(--copy-size); line-height: var(--copy-leading); }
 .day-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 830px; margin: 48px auto; text-align: center; }
-.date-editorial { border-right: 1px solid #f0eee54a; padding: 5px 45px 12px; }
+.date-editorial { border-right: 1px solid #ffffff4a; padding: 5px 45px 12px; }
 .date-month { font: 400 36px/1.5 var(--script); margin-top: 20px; }
 .big-day { font: 84px/1.1 var(--serif); margin: 7px 0 0; }
 .date-year { font: 22px/1.5 var(--serif); letter-spacing: 5px; margin-top: 3px; }
@@ -113,21 +116,21 @@ figcaption { font: 400 14px/1.7 var(--body); margin-top: 14px; }
 .venue > p:not(.eyebrow) { font-size: var(--copy-size); line-height: var(--copy-leading); }
 .venue-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 22px; margin-top: 25px; }
 .venue-actions .text-link { font-size: 13px; gap: 12px; }
-.countdown { border-top: 1px solid #f0eee54a; max-width: 830px; margin: 0 auto; padding-top: 28px; text-align: center; }
+.countdown { border-top: 1px solid #ffffff4a; max-width: 830px; margin: 0 auto; padding-top: 28px; text-align: center; }
 .countdown .eyebrow { font-size: var(--label-size); letter-spacing: 1.2px; }
 .countdown-values { display: flex; justify-content: center; align-items: center; gap: 26px; margin-top: 24px; }
 .countdown-values strong { display: block; font: 34px/1.3 var(--body); min-width: 58px; font-variant-numeric: tabular-nums; }
 .countdown-values span { font-size: 10px; letter-spacing: .7px; }
 .countdown-values b { font: 22px var(--body); opacity: .65; padding-bottom: 8px; }
 
-.dress-code-section { padding: clamp(52px, 5vw, 72px) 0; background: #606145 url('/assets/textura-papel-oliva.svg') repeat; color: #f7f4eb; }
+.dress-code-section { padding: clamp(52px, 5vw, 72px) 0; background: var(--green) url('/assets/textura-papel-oliva.svg') repeat; color: var(--paper); }
 .dress-code-layout { width: min(500px, 94%); margin: 0 auto; }
 .dress-code-card { position: relative; width: 100%; }
 .dress-code-lace { width: 100%; height: auto; pointer-events: none; filter: drop-shadow(0 5px 8px #25271f38); }
 .dress-code-copy { position: absolute; inset: 18% 21%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--wine); }
-.dress-code-copy .eyebrow { color: #606145; font-size: var(--label-size); letter-spacing: 1.2px; }
+.dress-code-copy .eyebrow { color: var(--green); font-size: var(--label-size); letter-spacing: 1.2px; }
 .dress-code-copy h2 { font-size: var(--title-size); line-height: 1.4; margin: 10px 0 20px; }
-.dress-code-guidance { font-size: var(--copy-size); line-height: var(--copy-leading); color: #565344; max-width: 22ch; }
+.dress-code-guidance { font-size: var(--copy-size); line-height: var(--copy-leading); color: var(--green); max-width: 22ch; }
 .dress-code-colors { list-style: none; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 0; margin: 16px 0 0; }
 .dress-code-colors li { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; line-height: 1.6; }
 .dress-code-swatch { position: relative; width: 17px; height: 17px; border: 1px solid #b9b3a5; border-radius: 50%; flex: 0 0 17px; }
@@ -151,9 +154,9 @@ figcaption { font: 400 14px/1.7 var(--body); margin-top: 14px; }
 .sort-label select { background: transparent; border: 0; color: var(--ink); font-size: 14px; padding: 10px 0 10px 8px; max-width: 165px; }
 .gift-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 36px; }
 .gift-card { min-width: 0; display: flex; flex-direction: column; }
-.gift-illustration { aspect-ratio: 1.25; display: flex; align-items: center; justify-content: center; background: #e4e2d7; position: relative; }
-.gift-card:nth-child(3n + 2) .gift-illustration { background: #e1e3d7; }
-.gift-card:nth-child(3n) .gift-illustration { background: #e7ddd7; }
+.gift-illustration { aspect-ratio: 1.25; display: flex; align-items: center; justify-content: center; background: #6e712d12; position: relative; }
+.gift-card:nth-child(3n + 2) .gift-illustration { background: #3e441e14; }
+.gift-card:nth-child(3n) .gift-illustration { background: #630c1e0d; }
 .gift-illustration svg { width: 53%; height: 65%; stroke: var(--wine); fill: none; stroke-width: 1.15; stroke-linecap: round; stroke-linejoin: round; }
 .gift-illustration small { position: absolute; bottom: 13px; left: 17px; font-size: 10px; letter-spacing: .5px; color: var(--muted); font-weight: 700; }
 .gift-card h3 { font: 700 17px/1.5 var(--body); color: var(--wine); margin: 19px 0 8px; }
@@ -168,53 +171,54 @@ figcaption { font: 400 14px/1.7 var(--body); margin-top: 14px; }
 .gift-more { text-align: center; margin-top: 45px; }
 .gift-footnote { color: var(--muted); font-size: var(--small-size); text-align: center; max-width: 650px; margin: 25px auto 0; line-height: 1.7; }
 
-/* The lace is an accent on the invitation, rather than a large ornamental frame. */
-.rsvp-editorial { padding: var(--section-space) 8%; background: var(--wine); color: var(--paper); }
+/* Keep the invitation on solid burgundy so its form stays readable. */
+.rsvp-editorial { padding: var(--section-space) 8%; background: var(--wine-deep); color: var(--paper); }
 .rsvp-intro { text-align: center; }
-.rsvp-intro .eyebrow { color: #c5b698; font-size: var(--label-size); letter-spacing: 1.2px; }
+.rsvp-intro .eyebrow { color: #ffffffd9; font-size: var(--label-size); letter-spacing: 1.2px; }
 .rsvp-intro h2 { margin: 20px 0; font-size: var(--title-size); line-height: 1.4; }
-.rsvp-intro > p:last-of-type { font-size: var(--copy-size); line-height: var(--copy-leading); color: #e9dfd7; max-width: 52ch; margin-inline: auto; }
+.rsvp-intro > p:last-of-type { font-size: var(--copy-size); line-height: var(--copy-leading); color: #ffffffd9; max-width: 52ch; margin-inline: auto; }
 .lace-note { width: 180px; height: 24px; margin: 30px auto 0; background: url('/assets/lace-border.svg') center / 60px 24px repeat-x; opacity: .8; }
 .rsvp-form-wrap { width: min(480px, 100%); margin: 38px auto 0; padding: 0; }
-.rsvp-form-wrap > .eyebrow { font-size: var(--label-size); color: #c5b698; margin-bottom: 24px; text-align: center; letter-spacing: 1.2px; }
+.rsvp-form-wrap > .eyebrow { font-size: var(--label-size); color: #ffffffd9; margin-bottom: 24px; text-align: center; letter-spacing: 1.2px; }
 .rsvp-form-wrap form { display: grid; gap: 12px; }
-.rsvp-form-wrap label, .rsvp-form-wrap legend { font-size: var(--small-size); color: #eee0d6; line-height: 1.7; }
-.rsvp-form-wrap input:not([type=radio]), .rsvp-form-wrap select, .rsvp-form-wrap textarea { padding: 13px 15px; width: 100%; border: 1px solid #a98c7e7a; background: #ffffff04; color: var(--paper); border-radius: 0; font-size: 16px; resize: vertical; }
-.rsvp-form-wrap input::placeholder, .rsvp-form-wrap textarea::placeholder { color: #cdbbb0; }
+.rsvp-form-wrap label, .rsvp-form-wrap legend { font-size: var(--small-size); color: #ffffffd9; line-height: 1.7; }
+.rsvp-form-wrap input:not([type=radio]), .rsvp-form-wrap select, .rsvp-form-wrap textarea { padding: 13px 15px; width: 100%; border: 1px solid #ffffff7a; background: #ffffff04; color: var(--paper); border-radius: 0; font-size: 16px; resize: vertical; }
+.rsvp-form-wrap input::placeholder, .rsvp-form-wrap textarea::placeholder { color: #ffffffd9; }
 .rsvp-form-wrap select option { background: var(--wine); }
 .rsvp-form-wrap .button { margin-top: 8px; width: 100%; font-size: 13px; }
 .rsvp-form-wrap fieldset { border: 0; padding: 0; margin: 5px 0 10px; }
 .rsvp-form-wrap legend { margin-bottom: 10px; }
 .radio-option { display: flex; gap: 10px; padding: 7px 0; align-items: center; }
-.radio-option input { width: 17px; height: 17px; accent-color: #c8bca0; }
+.radio-option input { width: 17px; height: 17px; accent-color: #ffffff; }
 .rsvp-form-wrap h3 { font: 700 21px/1.5 var(--body); margin-bottom: 8px; }
 #companion-field { display: grid; gap: 10px; }
-.change-guest { justify-self: start; color: #d4c5b0; font-size: 13px; }
+.change-guest { justify-self: start; color: #ffffffd9; font-size: 13px; }
 #rsvp-feedback { font-size: 14px; white-space: pre-line; margin-top: 16px; }
-.demo-note { font-size: 11px; color: #e0d0c4; line-height: 1.7; letter-spacing: .7px; text-align: center; padding-top: 22px; margin-top: 28px; border-top: 1px solid #a98c7e40; }
+.demo-note { font-size: 11px; color: #ffffffd9; line-height: 1.7; letter-spacing: .7px; text-align: center; padding-top: 22px; margin-top: 28px; border-top: 1px solid #ffffff40; }
 .demo-note span { font-size: 13px; letter-spacing: 0; }
 .error { color: #b82b39; }
 .rsvp-form-wrap .error { color: #ffbfaf; }
 
-.details-section { padding: var(--section-space) 8%; background: #e6e6dc; }
+.details-section { padding: var(--section-space) 8%; background: #6e712d0d; }
 .details-section > .eyebrow { color: var(--olive); text-align: center; font-size: var(--label-size); letter-spacing: 1.2px; }
 .details-section h2 { text-align: center; color: var(--wine); font-size: var(--title-size); margin: 23px 0 35px; line-height: 1.4; }
 .faq { max-width: 760px; margin: 0 auto; }
-.faq details { border-bottom: 1px solid #c7c9bb; }
+.faq details { border-bottom: 1px solid var(--line); }
 .faq summary { list-style: none; cursor: pointer; font: 700 16px/1.6 var(--body); padding: 22px 0; display: flex; justify-content: space-between; align-items: center; gap: 18px; line-height: 1.6; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary span { font-family: var(--body); font-size: 20px; }
 .faq details[open] summary span { transform: rotate(45deg); }
 .faq details p { font-size: var(--copy-size); line-height: var(--copy-leading); max-width: 64ch; padding-bottom: 22px; color: var(--muted); }
-.footer { padding: 55px 8% 28px; background: var(--wine); text-align: center; color: var(--paper); }
+.brand-pattern-divider { height: clamp(80px, 9vw, 120px); background: var(--paper) url('/assets/estampa-conchas-identidade.png') center / 340px auto repeat-x; }
+.footer { padding: 55px 8% 28px; background: var(--wine-deep); text-align: center; color: var(--paper); }
 .footer > img { width: 220px; height: auto; margin: 0 auto 23px; filter: invert(1); mix-blend-mode: screen; }
-.footer > p { font: 400 16px/1.8 var(--body); color: #e3d7cd; }
-.footer > .eyebrow { display: block; color: #d6c8b8; font-size: 11px; margin-top: 15px; letter-spacing: .8px; }
-.footer-bottom { max-width: 1120px; margin: 38px auto 0; border-top: 1px solid #a98c7e40; padding-top: 22px; display: flex; gap: 26px; align-items: center; color: #e2d4c6; font-size: 13px; text-align: left; line-height: 1.7; }
+.footer > p { font: 400 16px/1.8 var(--body); color: #ffffffd9; }
+.footer > .eyebrow { display: block; color: #ffffffd9; font-size: 11px; margin-top: 15px; letter-spacing: .8px; }
+.footer-bottom { max-width: 1120px; margin: 38px auto 0; border-top: 1px solid #ffffff40; padding-top: 22px; display: flex; gap: 26px; align-items: center; color: #ffffffd9; font-size: 13px; text-align: left; line-height: 1.7; }
 .footer-bottom > span { margin-right: auto; font-size: 11px; letter-spacing: .6px; }
 
 dialog { border: 0; width: min(700px, calc(100% - 32px)); max-height: 90svh; padding: 40px; background: var(--paper); color: var(--ink); box-shadow: 0 20px 80px #0005; overflow: auto; }
-dialog::backdrop { background: #18221cc9; backdrop-filter: blur(4px); }
+dialog::backdrop { background: #000000c9; backdrop-filter: blur(4px); }
 .dialog-close { position: absolute; right: 14px; top: 10px; font-size: 32px; width: 42px; height: 42px; line-height: 1; }
 .dialog-heading { padding-right: 18px; }
 .dialog-heading .eyebrow { color: var(--olive); font-size: var(--label-size); letter-spacing: 1.2px; }
@@ -260,7 +264,7 @@ dialog::backdrop { background: #18221cc9; backdrop-filter: blur(4px); }
   .brand img { width: 48px; height: 92px; }
   .menu-button { display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 11px; letter-spacing: 1px; }
   .menu-button span { font-size: 17px; }
-  .header nav { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 28px 7%; background: var(--wine); flex-direction: column; align-items: flex-start; gap: 16px; border-bottom: 1px solid #a98c7e40; font-size: 13px; }
+  .header nav { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 28px 7%; background: var(--wine); flex-direction: column; align-items: flex-start; gap: 16px; border-bottom: 1px solid #ffffff40; font-size: 13px; }
   .header nav.open { display: flex; }
 }
 @media (max-width: 800px) {
@@ -291,7 +295,7 @@ dialog::backdrop { background: #18221cc9; backdrop-filter: blur(4px); }
   .table-heading h2 { font-size: var(--title-size); margin-top: 20px; line-height: 1.4; }
   .table-portrait { grid-column: 1; grid-row: 2; width: min(310px, 100%); margin: 0 auto; }
   .table-portrait figcaption { font-size: 14px; line-height: 1.7; }
-  .table-copy { font-size: var(--copy-size); margin-top: 24px; line-height: var(--copy-leading); max-width: 58ch; color: #eeeade; }
+  .table-copy { font-size: var(--copy-size); margin-top: 24px; line-height: var(--copy-leading); max-width: 58ch; color: #ffffffd9; }
   .table-symbol { margin-top: 28px; margin-bottom: 26px; }
   .vow-banner { padding: 52px 0 55px; }
   .vow-copy .eyebrow { font-size: var(--label-size); letter-spacing: 1.2px; }
@@ -302,7 +306,7 @@ dialog::backdrop { background: #18221cc9; backdrop-filter: blur(4px); }
   .day-heading h2 { font-size: var(--title-size); line-height: 1.4; margin: 20px 0 17px; }
   .day-heading > p:last-child { font-size: var(--copy-size); line-height: var(--copy-leading); }
   .day-layout { grid-template-columns: minmax(0, 1fr); margin: 34px auto 39px; gap: 35px; }
-  .date-editorial { padding: 0 20px 34px; border-right: 0; border-bottom: 1px solid #f0eee54a; }
+  .date-editorial { padding: 0 20px 34px; border-right: 0; border-bottom: 1px solid #ffffff4a; }
   .big-day { font-size: 82px; }
   .date-year { font-size: 21px; }
   .venue { padding: 0; }
@@ -344,7 +348,7 @@ dialog::backdrop { background: #18221cc9; backdrop-filter: blur(4px); }
   .rsvp-editorial { padding: 65px 7%; }
   .rsvp-intro .eyebrow { font-size: var(--label-size); letter-spacing: 1.2px; }
   .rsvp-intro h2 { font-size: var(--title-size); line-height: 1.4; margin: 20px 0; }
-  .rsvp-intro > p:last-of-type { font-size: var(--copy-size); line-height: var(--copy-leading); max-width: 52ch; margin-inline: auto; color: #e9dfd7; }
+  .rsvp-intro > p:last-of-type { font-size: var(--copy-size); line-height: var(--copy-leading); max-width: 52ch; margin-inline: auto; color: #ffffffd9; }
   .rsvp-form-wrap { margin-top: 30px; }
   .rsvp-form-wrap input:not([type=radio]), .rsvp-form-wrap select, .rsvp-form-wrap textarea { font-size: 16px; }
   .rsvp-form-wrap .button { font-size: 13px; letter-spacing: .4px; padding-left: 18px; padding-right: 18px; }
@@ -355,9 +359,9 @@ dialog::backdrop { background: #18221cc9; backdrop-filter: blur(4px); }
   .faq details p { font-size: var(--copy-size); line-height: var(--copy-leading); color: var(--muted); max-width: 64ch; }
   .footer { padding: 43px 7% 25px; }
   .footer > img { width: 205px; }
-  .footer > p { font-size: 16px; color: #e3d7cd; }
-  .footer > .eyebrow { font-size: 11px; letter-spacing: .8px; color: #d6c8b8; }
-  .footer-bottom { flex-wrap: wrap; gap: 15px 23px; font-size: 13px; color: #e2d4c6; line-height: 1.7; }
+  .footer > p { font-size: 16px; color: #ffffffd9; }
+  .footer > .eyebrow { font-size: 11px; letter-spacing: .8px; color: #ffffffd9; }
+  .footer-bottom { flex-wrap: wrap; gap: 15px 23px; font-size: 13px; color: #ffffffd9; line-height: 1.7; }
   .footer-bottom > span { width: 100%; font-size: 11px; letter-spacing: .6px; }
   dialog { padding: 34px 23px 25px; }
   .dialog-heading h2 { font-size: 26px; line-height: 1.4; }
