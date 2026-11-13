@@ -7,17 +7,29 @@
   /* Original brand colors, separated by generous white surfaces. */
   --wine: #630c1e; --wine-deep: #4a0404;
   --olive: #6e712d; --green: #3e441e; --white: #ffffff;
-  --paper: #ffffff; --surface: #f4f4ef; --ink: #000000;
+  --paper: #f6f2e7; --surface: #efede4; --ink: #000000;
+  --stripe-width: clamp(10px, 1.55vw, 20px);
   --muted: #606155; --line: #00000026;
   --serif: LeJour, serif; --body: Lato, sans-serif; --script: Sloop, cursive;
   --section-space: clamp(64px, 7vw, 96px);
   --copy-size: 16px; --small-size: 14px; --label-size: 11px;
   --title-size: clamp(26px, 2.5vw, 32px); --copy-leading: 1.75;
+  --screen-height: 100vh;
 }
+@supports (height: 100svh) { :root { --screen-height: 100svh; } }
+@supports (height: 100dvh) { :root { --screen-height: 100dvh; } }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 30px; }
+html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: var(--copy-size)/var(--copy-leading) var(--body); }
 main { overflow-x: clip; }
+/* Each section fills a screen and can grow with its content. */
+main > section { width: 100%; min-height: var(--screen-height); }
+.welcome, .table-editorial, .vow-banner, .day-editorial,
+.dress-code-section, .rsvp-editorial, .details-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 a { color: inherit; text-decoration: none; }
 button, input, select, textarea { font: inherit; }
 button { border: 0; background: transparent; color: inherit; cursor: pointer; }
@@ -57,7 +69,7 @@ p + p { margin-top: 16px; }
 .nav-cta { border-bottom: 1px solid #ffffff7a; }
 .nav-cta span { margin-left: 16px; }
 .menu-button { display: none; font-size: 11px; }
-.masthead { min-height: 710px; height: 96svh; max-height: 960px; position: relative; background: var(--green); color: var(--paper); isolation: isolate; }
+.masthead { height: var(--screen-height); position: relative; background: var(--green); color: var(--paper); isolation: isolate; }
 .masthead-photo { position: absolute; width: 100%; height: 100%; inset: 0; object-fit: cover; object-position: 50% 42%; z-index: -2; }
 .masthead::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(#00000040, #00000000 48%, #000000a6); }
 .masthead-identity { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; }
@@ -70,9 +82,14 @@ p + p { margin-top: 16px; }
 .masthead-bottom p { max-width: 100%; font: clamp(12px, 1.15vw, 15px)/1.7 var(--body); text-transform: uppercase; text-wrap: balance; }
 
 /* A welcome on dark olive precedes the uncropped panoramic photograph. */
-.welcome { padding: 0; background: var(--green); color: var(--paper); }
-.welcome-heading { position: relative; padding: clamp(64px, 8vw, 112px) 5%; text-align: center; }
-.welcome-heading h2 { font-size: clamp(17px, 2.5vw, 32px); }
+/* Stationery references: olive and cream stripes, a deep-wine oval, fine double outlines. */
+.stationery-stripes { background: repeating-linear-gradient(90deg, var(--paper) 0 var(--stripe-width), var(--green) var(--stripe-width) calc(var(--stripe-width) * 2)); }
+.stationery-panel { position: relative; background: var(--wine-deep); color: var(--paper); border: 2px solid var(--paper); outline: 1px solid var(--wine-deep); outline-offset: 4px; box-shadow: inset 0 0 0 6px var(--wine-deep), inset 0 0 0 7px #f6f2e780; }
+.stationery-monogram { width: 60px; height: auto; margin-inline: auto; filter: invert(1); mix-blend-mode: screen; }
+.welcome { padding: 0; background: var(--paper); color: var(--paper); }
+.welcome-heading { display: grid; place-items: center; min-height: max(440px, calc(var(--screen-height) - 32.8vw)); padding: clamp(48px, 5.5vw, 76px) 6%; text-align: center; border-block: 8px solid var(--wine-deep); }
+.welcome-card { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 22px; width: min(620px, 100%); min-height: 360px; padding: 46px 38px; border-radius: 50%; }
+.welcome-heading h2 { font-size: clamp(17px, 2.35vw, 30px); line-height: 1.5; }
 .welcome-photo { width: 100%; height: auto; }
 figcaption { font: 400 14px/1.7 var(--body); margin-top: 14px; }
 .shell { width: 68px; height: auto; filter: invert(1); mix-blend-mode: screen; opacity: .85; margin: 25px 0 12px; }
@@ -172,7 +189,9 @@ figcaption { font: 400 14px/1.7 var(--body); margin-top: 14px; }
 .gift-footnote { color: var(--muted); font-size: var(--small-size); text-align: center; max-width: 650px; margin: 25px auto 0; line-height: 1.7; }
 
 /* The invitation uses wine on white, far from the olive welcome. */
-.rsvp-editorial { padding: var(--section-space) 8%; background: var(--paper); color: var(--ink); border-top: 1px solid var(--line); }
+.rsvp-editorial { padding: clamp(64px, 7vw, 100px) 7%; color: var(--paper); border-block: 8px solid var(--wine-deep); }
+.rsvp-stationery-card { width: min(760px, 100%); margin-inline: auto; min-width: 0; padding: 84px clamp(28px, 6vw, 92px) 96px; border-radius: 50% / 180px; }
+.rsvp-stationery-card > .stationery-monogram { width: 48px; margin-bottom: 26px; }
 .rsvp-intro { text-align: center; }
 .rsvp-intro .eyebrow { color: var(--wine); font-size: var(--label-size); letter-spacing: 1.2px; }
 .rsvp-intro h2 { color: var(--wine); margin: 20px 0; font-size: var(--title-size); line-height: 1.4; }
@@ -202,18 +221,43 @@ figcaption { font: 400 14px/1.7 var(--body); margin-top: 14px; }
 .rsvp-form-wrap .button.cream { background: var(--wine); color: var(--paper); }
 .rsvp-form-wrap .button.cream:hover { background: var(--wine-deep); }
 
+
+/* Form fields remain in normal flow so the capsule grows with a reply. */
+.rsvp-stationery-card .rsvp-intro .eyebrow,
+.rsvp-stationery-card .rsvp-intro h2,
+.rsvp-stationery-card .rsvp-form-wrap h3 { color: var(--paper); }
+.rsvp-stationery-card .rsvp-intro > p:last-of-type,
+.rsvp-stationery-card .rsvp-form-wrap > .eyebrow,
+.rsvp-stationery-card .rsvp-form-wrap label,
+.rsvp-stationery-card .rsvp-form-wrap legend,
+.rsvp-stationery-card .change-guest,
+.rsvp-stationery-card .demo-note { color: #f6f2e7e6; }
+.rsvp-stationery-card .lace-note { display: none; }
+.rsvp-stationery-card .rsvp-form-wrap { margin-top: 32px; }
+.rsvp-stationery-card .rsvp-form-wrap input:not([type=radio]),
+.rsvp-stationery-card .rsvp-form-wrap select,
+.rsvp-stationery-card .rsvp-form-wrap textarea { min-width: 0; border-color: #f6f2e799; background: #ffffff08; color: var(--paper); }
+.rsvp-stationery-card input::placeholder,
+.rsvp-stationery-card textarea::placeholder { color: #f6f2e7bf; }
+.rsvp-stationery-card .rsvp-form-wrap select option { background: var(--wine-deep); color: var(--paper); }
+.rsvp-stationery-card .rsvp-form-wrap .button.cream { background: var(--paper); color: var(--wine-deep); }
+.rsvp-stationery-card .rsvp-form-wrap .button.cream:hover { background: #e6dfcd; }
+.rsvp-stationery-card .demo-note { border-top-color: #f6f2e740; }
+.rsvp-stationery-card .radio-option input { accent-color: var(--paper); }
+.rsvp-stationery-card .rsvp-form-wrap .error { color: #ffd9cf; }
+
 .details-section { padding: var(--section-space) 8%; background: var(--paper); }
 .details-section > .eyebrow { color: var(--olive); text-align: center; font-size: var(--label-size); letter-spacing: 1.2px; }
 .details-section h2 { text-align: center; color: var(--green); font-size: var(--title-size); margin: 23px 0 35px; line-height: 1.4; }
-.faq { max-width: 760px; margin: 0 auto; }
+.faq { width: 100%; max-width: 760px; margin: 0 auto; }
 .faq details { border-bottom: 1px solid var(--line); }
 .faq summary { list-style: none; cursor: pointer; font: 700 16px/1.6 var(--body); padding: 22px 0; display: flex; justify-content: space-between; align-items: center; gap: 18px; line-height: 1.6; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary span { font-family: var(--body); font-size: 20px; }
 .faq details[open] summary span { transform: rotate(45deg); }
 .faq details p { font-size: var(--copy-size); line-height: var(--copy-leading); max-width: 64ch; padding-bottom: 22px; color: var(--muted); }
-.brand-pattern-divider { height: clamp(32px, 4vw, 48px); background: var(--paper) url('/assets/estampa-conchas-identidade.png') center / 420px auto repeat-x; }
-.footer { padding: 55px 8% 28px; background: var(--wine); text-align: center; color: var(--paper); }
+.brand-pattern-divider { height: 32px; background: repeating-linear-gradient(90deg, var(--paper) 0 12px, var(--green) 12px 24px); border-block: 2px solid var(--wine-deep); }
+.footer { padding: 55px 8% 28px; background: var(--wine-deep); text-align: center; color: var(--paper); }
 .footer > img { width: 220px; height: auto; margin: 0 auto 23px; filter: invert(1); mix-blend-mode: screen; }
 .footer > p { font: 400 16px/1.8 var(--body); color: #ffffffd9; }
 .footer > .eyebrow { display: block; color: #ffffffd9; font-size: 11px; margin-top: 15px; letter-spacing: .8px; }
@@ -278,12 +322,10 @@ dialog::backdrop { background: #000000c9; backdrop-filter: blur(4px); }
 }
 @media (max-width: 680px) {
   :root { --title-size: 26px; }
-  html { scroll-padding-top: 18px; }
   .page-width { width: 86%; }
   .header { min-height: 104px; padding: 12px 6%; }
   .brand > span { font-size: 10px; letter-spacing: .9px; }
   .brand img { width: 42px; height: 80px; }
-  .masthead { height: 91svh; min-height: 660px; max-height: 850px; }
   .masthead-photo { object-position: 50% 47%; }
   .masthead h1 { width: 78%; max-width: 360px; }
   .masthead-date { font-size: 7px; letter-spacing: 1px; }
@@ -348,7 +390,12 @@ dialog::backdrop { background: #000000c9; backdrop-filter: blur(4px); }
   .gift-card-bottom button { width: 100%; justify-content: space-between; font-size: 13px; font-weight: 700; gap: 8px; }
   .gift-more { margin-top: 30px; }
   .gift-footnote { font-size: var(--small-size); color: var(--muted); line-height: 1.7; }
-  .rsvp-editorial { padding: 65px 7%; }
+  .welcome-heading { padding: 44px 24px; }
+  .welcome-card { min-height: 300px; padding: 40px 20px; gap: 20px; }
+  .welcome-card .stationery-monogram { width: 50px; }
+  .rsvp-editorial { padding: 56px 20px; }
+  .rsvp-stationery-card { padding: 72px 26px 80px; border-radius: 50% / 130px; }
+  .rsvp-stationery-card > .stationery-monogram { width: 42px; margin-bottom: 20px; }
   .rsvp-intro .eyebrow { font-size: var(--label-size); letter-spacing: 1.2px; }
   .rsvp-intro h2 { font-size: var(--title-size); line-height: 1.4; margin: 20px 0; }
   .rsvp-intro > p:last-of-type { font-size: var(--copy-size); line-height: var(--copy-leading); max-width: 52ch; margin-inline: auto; color: var(--muted); }
@@ -385,6 +432,14 @@ dialog::backdrop { background: #000000c9; backdrop-filter: blur(4px); }
   .countdown-values strong { font-size: 25px; min-width: 35px; }
   .details-section h2 { font-size: var(--title-size); line-height: 1.4; }
   .dress-code-copy h2 { font-size: var(--title-size); line-height: 1.4; }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  .header { min-height: 80px; padding-block: 8px; }
+  .brand img { height: 64px; }
+  .masthead h1 { width: min(280px, 50%); }
+  .masthead h1 img { max-height: calc(var(--screen-height) - 180px); object-fit: contain; }
+  .masthead-bottom { inset-block-end: 16px; }
+  .masthead-bottom p { font-size: 11px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
